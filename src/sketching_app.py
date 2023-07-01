@@ -344,9 +344,9 @@ class SketchedLinearLeastSquares(LinearLeastSquares):
     def _get_GradientMethod(self):
 
         # First iteration
-        self.x -= np.min(self.alpha) * self.d
+        self.x -= np.mean(self.alpha) * self.d
         if self.proxg is not None:
-            self.x = self.proxg(np.max(self.alpha), self.x)
+            self.x = self.proxg(np.mean(self.alpha), self.x)
 
         def gradf(x):
             with self.device:
