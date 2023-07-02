@@ -7,7 +7,6 @@ from tqdm.auto import tqdm
 import scipy.io as sio
 sys.path.append('../src')
 sys.path.append('../lib')
-import cupy as cp
 
 def coil_compression(ksp):
     device = sp.get_device(ksp)

@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-"""This module contains an abstract class App for sketched iterative reconstruction,
-and provides a few general Apps, including a sketched linear least squares App,
-and a maximum eigenvalue estimation App.
+"""
+Coil Sketching
+by Julio A. Oscanoa (joscanoa@stanford.edu), 2023.
+
+This module contains an abstract class App for sketched iterative reconstruction.
 """
 import numpy as np
 import sigpy as sp
@@ -344,9 +346,9 @@ class SketchedLinearLeastSquares(LinearLeastSquares):
     def _get_GradientMethod(self):
 
         # First iteration
-        self.x -= np.mean(self.alpha) * self.d
+        self.x -= np.min(self.alpha) * self.d
         if self.proxg is not None:
-            self.x = self.proxg(np.mean(self.alpha), self.x)
+            self.x = self.proxg(np.min(self.alpha), self.x)
 
         def gradf(x):
             with self.device:

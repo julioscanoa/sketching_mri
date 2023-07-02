@@ -6,8 +6,6 @@ and a maximum eigenvalue estimation App.
 import numpy as np
 import sigpy as sp
 import time
-import random
-
 from tqdm.auto import tqdm
 from sigpy import backend, linop, prox, util
 from sigpy.alg import (PowerMethod, GradientMethod)
@@ -15,7 +13,6 @@ from stochastic_alg import StochasticGradient
 
 from sigpy.app import (App, MaxEig)
 import scipy.io as sio
-import cupy as cp
 # from utils import TotalVariationRecon_PDHGmod
 
 class StochasticLinearLeastSquares(App):

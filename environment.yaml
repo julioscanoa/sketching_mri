@@ -1,0 +1,10 @@
+name: sketching-env
+channels:
+  - conda-forge
+  - anaconda
+  - frankong
+dependencies:
+  - python=3.6
+  - sigpy
+  - cupy=8.1
+  

@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
-"""This module contains an abstract class App for sketched iterative reconstruction,
-and provides a few general Apps, including a sketched linear least squares App,
-and a maximum eigenvalue estimation App.
+"""
+Coil Sketching
+by Julio A. Oscanoa (joscanoa@stanford.edu), 2023.
+
+This module contains MR iterative reconstruction apps for iterative sketching
+based reconstruction. Apps include general Coil Sketching and more specific
+L1 and L2 regularized reconstructions.
 """
 import numpy as np
 import time
@@ -113,57 +117,6 @@ class CoilSketching(SketchedLinearLeastSquares):
         self.sketch_sigma = sigma
         self.mps_S_array = mps_sk
         return
-    # def make_sketched_model(self, mps, nch, sketch_type, nch_nsk=None, y=None, sigma=None):
-    #
-    #
-    #     mps_shape = mps.shape
-    #     nc = mps_shape[0]
-    #     ishape = mps_shape[1:]
-    #
-    #     if nch_nsk is None:
-    #         nch_nsk = nch - 1
-    #     elif nch_nsk == -1:
-    #         nch_nsk = nch
-    #
-    #     nch_sk = nch - nch_nsk
-    #     nc_sk = nc - nch_nsk
-    #
-    #     # #Sketching matrix
-    #     sk_size = [nc-nch_nsk] + [1]*len(ishape) + [nch-nch_nsk]
-    #      #Sketching matrix
-    #     # sk_size = [nc]
-    #     # sk_size.extend([1]*len(ishape))
-    #     # sk_size.append(nch)
-    #
-    #     #Sensitivity maps
-    #     mps_t = np.zeros([nch]+list(ishape), dtype=mps.dtype)
-    #     mps_t[:nch_nsk, ...] = mps[:nch_nsk, ...]
-    #
-    #     # sigma = np.zeros([nc,nch], dtype=mps.dtype)
-    #     # sigma[range(nch_nsk),range(nch_nsk)] = 1
-    #
-    #     if nch_sk > 0:
-    #         if sigma is None:
-    #             if sketch_type == 'Gaussian':
-    #                 # Gaussian sketch
-    #                 sigma = np.random.normal(0,1, [nc-nch_nsk,nch-nch_nsk])/np.sqrt(nch_sk)
-    #                 # sigma = np.random.normal(0,1, [nc,nch])/np.sqrt(nch)
-    #
-    #             elif sketch_type == 'Rademacher':
-    #                 sigma = (np.random.randint(0, 2, size=[nc-nch_nsk,nch-nch_nsk])*2 - 1)/np.sqrt(nch_sk)
-    #
-    #         sigma = sigma.astype(mps.dtype)
-    #         sigma1 = np.reshape(sigma, sk_size)
-    #         mps_sk = np.sum(np.expand_dims(mps[nch_nsk:,...],-1) * sigma1, 0)
-    #         mps_sk = np.moveaxis(mps_sk, -1, 0)
-    #         mps_t[nch_nsk:, ...] = mps_sk
-    #
-    #         # print(sigma)
-    #         # sigma = np.reshape(sigma, sk_size)
-    #         # mps_t = np.sum(np.expand_dims(mps,-1) * sigma, 0)
-    #         # mps_t = np.moveaxis(mps_t, -1, 0)
-    #
-    #     return (mps_t, sigma)
 
     def _make_initial_sketched_problem(self):
 
