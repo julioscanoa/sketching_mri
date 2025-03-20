@@ -34,6 +34,11 @@ cd scripts
 python example_l1wavelets.py --device=0 --verbose
 ```
 
+## Version 2.0 notes
+Version 2.0 of the coil sketching code is uploaded. Reconstruction classes are lighter and more efficient.
+Currently, this new version includes only the L1-Wavelets reconstruction. This will be updated in the future.
+Python script and jupyter notebooks for this version are included as well.
+
 ### Jupyter notebook
 Install the jupyter lab packages and enable the ipywidgets notebook extension for showing progress bars.
 

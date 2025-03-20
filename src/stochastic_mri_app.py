@@ -68,7 +68,7 @@ class StochasticCoilRecon(StochasticLinearLeastSquares):
     def _get_random_index(self):
         nc = self.total_ncoils
         ncs = self.reduced_ncoils-self.fixed_ncoils
-        ind_c = np.zeros([0],dtype=np.int)
+        ind_c = np.zeros([0],dtype=int)
 
         while len(ind_c) < ncs:
             size_c = min(ncs, len(self.coil_list), ncs-len(ind_c))
